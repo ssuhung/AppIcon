@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.ssuhung.appUpdateDetector</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <true />
+    <key>KeepAlive</key>
+    <true />
+    <key>StandardOutPath</key>
+    <string>/tmp/com.ssuhung.appUpdateDetector.out</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/com.ssuhung.appUpdateDetector.out</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Users/ssuhung/Pictures/Apps Icon/src/changeFileIcon</string>
+    </array>
+    <key>WatchPaths</key>
+    <array>
+      <string>/Applications/Visual Studio Code.app</string>
+      <string>/Applications/The Unarchiver.app</string>
+      <string>/Applications/Microsoft Word.app</string>
+      <string>/Applications/Microsoft PowerPoint.app</string>
+      <string>/Applications/Microsoft Excel.app</string>
+      <string>/Applications/Microsoft OneNote.app</string>
+      <string>/Applications/zoom.us.app</string>
+      <string>/Applications/Google Chrome.app</string>
+      <string>/Applications/AppCleaner.app</string>
+      <string>/Applications/24 Hour Wallpaper.app</string>
+    </array>
+  </dict>
+</plist>

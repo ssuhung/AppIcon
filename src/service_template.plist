@@ -1,0 +1,23 @@
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.ssuhung.appUpdateDetector</string>
+	<key>EnvironmentVariables</key>
+    <dict>
+           <key>PATH</key>
+           <string>/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin</string>
+    </dict>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+    <true/>
+	<key>StandardOutPath</key>
+	<string>/tmp/com.ssuhung.appUpdateDetector.out</string>
+	<key>StandardErrorPath</key>
+	<string>/tmp/com.ssuhung.appUpdateDetector.out</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/ssuhung/Pictures/Apps Icon/src/changeFileIcon</string>
+	</array>
+</dict>
+</plist>
