@@ -1,0 +1,8 @@
+[package]
+name = "app_icon"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+serde = "1.0"
+serde_json = "1.0"
