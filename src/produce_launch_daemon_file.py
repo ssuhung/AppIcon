@@ -1,17 +1,15 @@
+import json
 import os
 import xml.etree.ElementTree as ET
 
 XML_DECLARATION = '<?xml version="1.0" encoding="UTF-8"?>\n'
 DOCTYPE_DECLARATION = '<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n'
 APPLICATION_DIR = '/Applications/'
-
-app_list = ["Visual Studio Code", "The Unarchiver",
-            "Microsoft Word", "Microsoft PowerPoint",
-            "Microsoft Excel", "Microsoft OneNote",
-            "zoom.us", "Google Chrome",
-            "AppCleaner", "24 Hour Wallpaper"]
+app_list_dir = '../icon/app_list.json'
 launch_daemon_file = 'com.ssuhung.appUpdateDetector.plist'
 
+with open(app_list_dir, "r") as json_file:
+    app_list = json.load(json_file)
 watch_paths_list = [os.path.join(APPLICATION_DIR, app_name + '.app') for app_name in app_list]
 
 tree = ET.parse('./service_template.plist')
