@@ -17,7 +17,7 @@
 	<string>/tmp/com.ssuhung.appUpdateDetector.out</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Users/ssuhung/Pictures/Apps Icon/src/changeFileIcon</string>
+		<string>/Users/ssuhung/Pictures/Apps Icon/target/debug/app_icon</string>
 	</array>
 </dict>
 </plist>

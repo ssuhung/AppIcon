@@ -5,22 +5,19 @@ Change the icon of an app in MacOS for good, so that it won't break even after t
 # Solution
 
 1. Use [fileicon](https://github.com/mklement0/fileicon) to change app's icon programaticlly
-2. Register a Launch Daemon using `launchctl` to monitor a change in certain folder
+2. Compile the script to an executable so that it can be given permission to change other app's content
+3. Register a Launch Daemon using `launchctl` to monitor a change in certain folder
 
 # Dependency
 
-1. [fileicon](https://github.com/mklement0/fileicon)
+We use [fileicon](https://github.com/mklement0/fileicon) to change the icon of apps, follow the instruction of the repository to install it.
 
 # Usage
 
-### Execute the script to change all app's icon
+### Compile and execute the program to change all apps' icon
 ```shell
-sudo sh changeFileIcon.sh
-```
-
-### Compile the script to executable
-```shell
-shc -f changeFileIcon.sh
+cargo build
+sudo cargo run
 ```
 
 ### Produce launch daemon file
@@ -33,12 +30,15 @@ python src/produce_launch_daemon_file.py
 sudo sh src/registerService.sh register
 ```
 
-### Unregister the launch deamon
+### Give the executable "Full Disk Access" permission
+Go to the system setting, Security & Privacy, Full Disk Access. Add the compiled executable `target/debug/app_icon` to the permission list.
+
+### Unregister the launch deamon (WIP)
 ```shell
 sudo sh src/registerService.sh unregister
 ```
 
-### Re-registered launch deamon
+### Re-registered launch deamon (WIP)
 ```shell
 sudo sh src/registerService.sh reregister
 ```
@@ -46,5 +46,4 @@ sudo sh src/registerService.sh reregister
 # TODO
 
 1. 完整 registerService.sh、進入前檢測權限
-2. 使用單一檔案管理存所有 app name
-3. 不要使用 shc 編譯 script
+2. 研究有沒有不用完全硬碟存取權限的方法
