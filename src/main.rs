@@ -1,3 +1,4 @@
+extern crate libc;
 extern crate serde;
 extern crate serde_json;
 
@@ -10,6 +11,14 @@ use std::io::Read;
 fn main() {
     let app_folder = "/Applications";
 
+    let uid = unsafe { libc::geteuid() };
+    assert_eq!(uid, 0, "The superuser(root) permission if required");
+    
+    if Command::new("fileicon").arg("--version").stdout(std::process::Stdio::null()).status().is_err() {
+        eprintln!("fileicon is not installed, checkout https://github.com/mklement0/fileicon to install it");
+        return;
+    }
+
     let project_root: String;
     match env::current_exe() {
         Ok(path) => {
@@ -20,11 +29,6 @@ fn main() {
             return;
         }
     }
-    
-    if Command::new("fileicon").arg("--version").stdout(std::process::Stdio::null()).status().is_err() {
-        eprintln!("fileicon is not installed, checkout https://github.com/mklement0/fileicon to install it");
-        return;
-    }    
     
     let json_path: String = format!("{project_root}/icon/app_list.json");
     let mut file: File = File::open(json_path).expect("Failed to open app_list.json file");

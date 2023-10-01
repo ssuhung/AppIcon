@@ -3,6 +3,11 @@
 SCRIPTPATH=$(cd "$(dirname "$0")"; pwd -P)
 SERVICE_NAME="com.ssuhung.appUpdateDetector"
 
+if [ "$UID" -ne 0 ]; then
+    echo "Superuser (root) permission is required to (un)register services"
+    exit 1
+fi
+
 case "$1" in
   "register")
     chown root:wheel "${SCRIPTPATH}/${SERVICE_NAME}.plist"
@@ -24,7 +29,7 @@ case "$1" in
     launchctl bootout system /Library/LaunchDaemons/${SERVICE_NAME}.plist
     ;;
   *)
-    echo "Invalid command. Please specify a valid option (register, reregister, unregister)."
+    echo "Invalid command. Please specify a valid option (register, reregister, unregister)"
     exit 1
     ;;
 esac
