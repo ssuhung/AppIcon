@@ -7,10 +7,6 @@
            <key>PATH</key>
            <string>/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin</string>
     </dict>
-	<key>RunAtLoad</key>
-	<true/>
-	<key>KeepAlive</key>
-    <true/>
 	<key>StandardOutPath</key>
 	<string>/tmp/com.ssuhung.appUpdateDetector.out</string>
 	<key>StandardErrorPath</key>
