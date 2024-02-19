@@ -57,14 +57,13 @@ fn main() {
         let test_status = Command::new("fileicon")
             .arg("test")
             .arg(&app_path)
-            .status();
-
-        let test_status_code: i32 = match test_status {
-            Ok(_) => 1,
-            Err(_) => -1,
-        };
+            .status()
+            .expect("fileicon test command failed");
         
-        if test_status_code != 0 {
+        if test_status.success() {
+            println!("The icon of app {} is already set", app_name)
+        }
+        else {
             let set_status: Result<std::process::ExitStatus, std::io::Error> = Command::new("fileicon")
             .arg("set")
             .arg(&app_path)
@@ -74,9 +73,6 @@ fn main() {
                 Ok(_) => (),
                 Err(_) => eprintln!("Error when setting icon for app {}", app_name),
             };
-        }
-        else {
-            println!("The icon of app {} is already set", app_name)
         }
     }
 }
